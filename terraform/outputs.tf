@@ -3,3 +3,8 @@ output "web_server_ip" {
   value       = aws_instance.lamp_server.public_ip
 }
 
+output "private_key_pem" {
+	description = "Private SSH key for connecting to EC2 instance"
+	value       = tls_private_key.lamp_key.private_key_pem
+	sensitive   = true
+}

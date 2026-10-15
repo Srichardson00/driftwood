@@ -94,6 +94,7 @@ resource "aws_instance" "lamp_server" {
   instance_type          = var.instance-type
   subnet_id              = aws_subnet.lamp_subnet.id
   vpc_security_group_ids = [aws_security_group.lamp_sg.id]
+  key_name               = aws_key_pair.generated_key.key_name
 
   user_data = <<-EOF
 			  #!/bin/bash
@@ -113,3 +114,15 @@ resource "aws_instance" "lamp_server" {
   tags = { Name = "SchoolProject-LAMP"}
 }
 
+###################################################################################
+#GENEREATE SSH KEY PAIR
+
+resource "tls_private_key" "lamp_key" {
+  algorithm = "RSA"
+  rsa_bits = 4096
+}
+
+resource "aws_key_pair" "generated_key" {
+  key_name = "lamp-server-key"
+  public_key = tls_private_key.lamp_key.public_key_openssh
+}

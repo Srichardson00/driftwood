@@ -52,6 +52,22 @@ resource "aws_route_table_association" "lamp_rta" {
   route_table_id = aws_route_table.lamp_rt.id
 }
 
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+	name   = "name"
+	values = ["*ubuntu-noble-24.04-amd64-server-*"] 
+  }
+
+  filter {
+	name   = "virtualization-type"
+	values = ["hvm"]
+  }
+
+  owners = ["099720109477"]
+}
+
 ####################################################################
 #FIREWALL CONFIGURATION
 
@@ -90,7 +106,7 @@ resource "aws_security_group" "lamp_sg" {
 #EC2 INSTANCE SETUP
 
 resource "aws_instance" "lamp_server" {
-  ami                    = "ami-0797542918da874fe"
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance-type
   subnet_id              = aws_subnet.lamp_subnet.id
   vpc_security_group_ids = [aws_security_group.lamp_sg.id]

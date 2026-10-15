@@ -26,7 +26,7 @@
 		<a href="findus.php">Come find us</a>
 	</main>
 	<article class="form">
-		<form action="/~tpollard/csci202/forms/form_results.php">
+		<form action="process-contact.php" method="POST">
 			<h3>Contact Form</h3>
 			<p>
 				<label for="name">NAME </label>

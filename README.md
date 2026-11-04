@@ -1,4 +1,4 @@
-# driftwood Automated PHP Web Application Deployment on AWS LAMP Stack
+# Driftwood: Automated PHP Web Application Deployment on AWS LAMP Stack
 
 A complete end-to-end DevOps project showcasing Infrastructure as Code (IaC) with Terraform and continuous deployment via GitHub Actions to host a PHP web application on an AWS EC2 LAMP stack.
 

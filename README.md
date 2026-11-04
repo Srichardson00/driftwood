@@ -1,33 +1,35 @@
-# driftwood
-Automated PHP Web Application Deployment on AWS LAMP Stack
+# driftwood Automated PHP Web Application Deployment on AWS LAMP Stack
+
 A complete end-to-end DevOps project showcasing Infrastructure as Code (IaC) with Terraform and continuous deployment via GitHub Actions to host a PHP web application on an AWS EC2 LAMP stack.
 
-🛠️ Tech Stack & Architecture
-Infrastructure as Code: Terraform
+## 🛠️ Tech Stack & Architecture
 
-Cloud Provider: Amazon Web Services (AWS EC2, VPC, Security Groups)
+* Infrastructure as Code: Terraform
 
-Web Stack (LAMP): Apache2, PHP, Linux (Ubuntu 24.04 LTS)
+* Cloud Provider: Amazon Web Services (AWS EC2, VPC, Security Groups)
 
-CI/CD Pipeline: GitHub Actions (appleboy/scp-action)
+* Web Stack (LAMP): Apache2, PHP, Linux (Ubuntu 24.04 LTS)
 
-Version Control: Git & GitHub
+* CI/CD Pipeline: GitHub Actions (appleboy/scp-action)
 
-🚀 Key Features & Implementation Details
-Declarative Infrastructure Provisioning:
+* Version Control: Git & GitHub
 
-Managed AWS VPC, Internet Gateway, Subnet, and Security Group ingress/egress rules using modular Terraform configuration.
+## 🚀 Key Features & Implementation Details
 
-Utilized dynamic Ubuntu 24.04 AMI lookup to avoid hardcoded AMI IDs across AWS regions.
+### Declarative Infrastructure Provisioning:
 
-Automated CI/CD Pipeline:
+* Managed AWS VPC, Internet Gateway, Subnet, and Security Group ingress/egress rules using modular Terraform configuration.
 
-Configured GitHub Actions to automatically trigger deployments on every push to the main branch.
+* Utilized dynamic Ubuntu 24.04 AMI lookup to avoid hardcoded AMI IDs across AWS regions.
 
-Secured SSH credentials using GitHub Encrypted Secrets (EC2_SSH_KEY and EC2_HOST).
+### Automated CI/CD Pipeline:
 
-Automated secure SCP file sync directly into the server's web root (/var/www/html).
+* Configured GitHub Actions to automatically trigger deployments on every push to the main branch.
 
-Web Server Hardening & Permissions:
+* Secured SSH credentials using GitHub Encrypted Secrets (EC2_SSH_KEY and EC2_HOST).
 
-Enforced directory ownership (ubuntu:ubuntu) on the Apache web root to allow non-root automated deployments via SCP.
+* Automated secure SCP file sync directly into the server's web root (/var/www/html).
+
+* Web Server Hardening & Permissions:
+
+* Enforced directory ownership (ubuntu:ubuntu) on the Apache web root to allow non-root automated deployments via SCP.
